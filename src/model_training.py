@@ -3,6 +3,7 @@ from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier, VotingClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+import os
 import joblib
 
 def train_model(X, y, model_type='Naive Bayes'):
@@ -32,6 +33,9 @@ def train_model(X, y, model_type='Naive Bayes'):
     return model
 
 def save_model(model, tfidf, model_path='models/sentiment_model.pkl', vectorizer_path='models/tfidf_vectorizer.pkl'):
+    # Create the directory if it doesn't exist
+    os.makedirs(os.path.dirname(model_path), exist_ok=True)
+
     # Save the model and vectorizer
     joblib.dump(model, model_path)
     joblib.dump(tfidf, vectorizer_path)
