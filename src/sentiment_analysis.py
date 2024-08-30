@@ -1,10 +1,13 @@
+import os
 import joblib
 
 def load_model(model_path='models/sentiment_model.pkl', vectorizer_path='models/tfidf_vectorizer.pkl'):
-    # Load the trained model and TF-IDF vectorizer
-    model = joblib.load(model_path)
-    vectorizer = joblib.load(vectorizer_path)
-    return model, vectorizer
+    if os.path.exists(model_path) and os.path.exists(vectorizer_path):
+        model = joblib.load(model_path)
+        vectorizer = joblib.load(vectorizer_path)
+        return model, vectorizer
+    else:
+        return None, None
 
 def predict_sentiment(model, vectorizer, text):
     # Preprocess the input text and make a prediction

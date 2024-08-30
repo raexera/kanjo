@@ -17,6 +17,8 @@ uploaded_file = st.file_uploader("Upload your dataset (CSV format)", type="csv")
 # Load model and vectorizer if not training a new model
 if not uploaded_file:
     model, vectorizer = load_model()
+    if model is None or vectorizer is None:
+        st.write("No pre-trained model found. Please upload a custom dataset to train a new model.")
 
 # User input for sentiment analysis
 user_input = st.text_area("Enter text for sentiment analysis:")
