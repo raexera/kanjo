@@ -86,3 +86,7 @@ if uploaded_file and model is not None:
     st.write("### Model Performance")
     accuracy = model.score(X, y)
     st.write(f"Model Accuracy: {accuracy * 100:.2f}%")
+
+# Footer
+st.write("---")
+st.markdown("<h6 style='text-align: center;'>Made with ♥️ by <a href='https://github.com/rxyhn'>rxyhn</a></h6>", unsafe_allow_html=True)
